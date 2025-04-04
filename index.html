@@ -5,90 +5,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BetPower - Sportsbook & Casino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css22?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; background-color: #f5f5f5; color: #333; }
+
     header {
-      background-color: #000;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      background-color: #000; color: white;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000;
     }
-    header img {
-      height: 45px;
-    }
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
+
+    header img { height: 45px; }
+    nav { display: flex; gap: 1.5rem; }
     nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
+      color: white; text-decoration: none; font-weight: 500;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #FFD700;
-    }
-    .auth-buttons {
-      display: flex;
-      gap: 1rem;
-    }
+    nav a:hover { color: #FFD700; }
+
+    .auth-buttons { display: flex; gap: 1rem; }
     .auth-buttons button {
-      background-color: #1E90FF;
-      border: none;
-      padding: 0.5rem 1rem;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
+      background-color: #1E90FF; border: none; padding: 0.5rem 1rem;
+      color: white; border-radius: 5px; cursor: pointer;
       transition: background 0.3s ease;
     }
-    .auth-buttons button:hover {
-      background-color: #4682B4;
-    }
+    .auth-buttons button:hover { background-color: #4682B4; }
+
     .carousel {
-      width: 100%;
-      height: 400px;
+      width: 100%; height: 400px;
       background: url('banner.jpg') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2.5rem;
-      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 2.5rem; font-weight: bold;
       text-shadow: 2px 2px 5px black;
+      animation: fadein 2s ease-in-out;
     }
+
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 2rem 0 1rem;
+      color: #002244;
+    }
+
     .productos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      padding: 3rem 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
     }
+
     .producto {
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .producto img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .producto-content {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .producto h3 {
+      color: #003366;
+      margin-bottom: 0.5rem;
+    }
+
+    .producto p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .producto button {
+      margin-top: 1rem;
+      background-color: #FFD700;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
     .producto:hover {
       transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
     }
+
+    .extra-content {
+      background-color: #fff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .extra-content h2 {
+      margin-bottom: 1rem;
+      color: #002244;
+    }
+
+    .extra-content p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
     footer {
       background-color: #000;
       color: white;
@@ -96,17 +131,11 @@
       padding: 1.5rem;
       margin-top: 2rem;
     }
+
     @media (max-width: 768px) {
-      .carousel {
-        font-size: 1.8rem;
-        height: 250px;
-        padding: 1rem;
-        text-align: center;
-      }
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+      .carousel { font-size: 1.8rem; height: 250px; padding: 1rem; text-align: center; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .auth-buttons { display: none; }
     }
   </style>
 </head>
@@ -127,15 +156,40 @@
   </header>
 
   <div class="carousel">
-    Welcome to BetPower!
+    Bet Smarter. Win Bigger.
   </div>
 
+  <h2 class="section-title">Our Top Products</h2>
   <section class="productos">
-    <div class="producto">⚽ Sports Betting</div>
-    <div class="producto">🎲 Live Casino</div>
-    <div class="producto">🎰 Slots</div>
-    <div class="producto">🏈 Live Events</div>
-    <div class="producto">🧧 Bonuses & Promotions</div>
+    <div class="producto">
+      <img src="https://source.unsplash.com/400x300/?sports" alt="Sports Betting">
+      <div class="producto-content">
+        <h3>Sports Betting</h3>
+        <p>Bet on your favorite games with live odds and real-time updates.</p>
+        <button>Explore</button>
+      </div>
+    </div>
+    <div class="producto">
+      <img src="https://source.unsplash.com/400x300/?casino" alt="Casino">
+      <div class="producto-content">
+        <h3>Live Casino</h3>
+        <p>Experience the thrill of Vegas with our live dealers and table games.</p>
+        <button>Play Now</button>
+      </div>
+    </div>
+    <div class="producto">
+      <img src="https://source.unsplash.com/400x300/?slots" alt="Slots">
+      <div class="producto-content">
+        <h3>Slots</h3>
+        <p>Spin the reels and hit the jackpot with hundreds of slot games.</p>
+        <button>Spin</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="extra-content">
+    <h2>Why Choose BetPower?</h2>
+    <p>We combine cutting-edge technology with seamless design to bring you the ultimate online betting experience. Trusted, secure, and fast — BetPower is your go-to platform for sports, casino, and big wins. Join thousands of happy users today!</p>
   </section>
 
   <footer>
