@@ -1,199 +1,213 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BetPower Final Site</title>
+  <title>BetPower</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #f5f5f5; color: #333; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; background: #0e1626; color: white; }
+
     header {
-      background-color: #001f3f;
-      color: white;
+      background: #0b1220;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    header img { height: 50px; }
+
+    header img {
+      height: 60px;
+    }
+
     .auth-buttons button {
-      background-color: #FFD700;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
       margin-left: 1rem;
-    }
-    .nav-menu {
-      background-color: #003366;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 1rem;
-      gap: 2rem;
-    }
-    .nav-menu a {
-      color: white;
-      text-decoration: none;
+      padding: 0.5rem 1rem;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
     }
-    .nav-menu a:hover {
-      color: #FFD700;
-    }
-    .banner {
-      background: url('banner.jpg') no-repeat center center/cover;
-      height: 400px;
+
+    .auth-buttons .login { background: transparent; color: white; border: 1px solid white; }
+    .auth-buttons .join { background: #FFD700; color: black; }
+
+    .nav-menu {
+      background: #0e2a47;
+      padding: 0.7rem 1rem;
       display: flex;
+      gap: 2rem;
       justify-content: center;
-      align-items: center;
-      font-size: 2.8rem;
-      color: white;
-      text-shadow: 2px 2px 8px black;
     }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .nav-item img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+
+    .banner-container {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .banner-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 0 2rem;
     }
+
     .card {
-      background-color: white;
+      background: #16263a;
+      padding: 1rem;
       border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
     }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
     .card img {
       width: 100%;
-      height: 180px;
+      border-radius: 8px;
+      height: 120px;
       object-fit: cover;
+      margin-bottom: 0.5rem;
     }
+
     .card h3 {
-      padding: 1rem;
-      margin: 0;
-      text-align: center;
+      color: white;
+      font-size: 1rem;
     }
-    .betting-options {
-      padding: 2rem;
-      background: white;
-    }
-    .betting-options h2 {
-      text-align: center;
-      color: #002244;
-      margin-bottom: 2rem;
-    }
-    .footer {
-      background-color: #001f3f;
+
+    footer {
+      background: #0b1220;
       color: white;
       padding: 3rem 2rem;
+      font-size: 0.85rem;
     }
+
     .footer-columns {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 2rem;
     }
+
     .footer-columns h4 {
       border-bottom: 1px solid #004080;
-      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
     }
+
     .footer-columns ul {
       list-style: none;
       padding: 0;
     }
+
     .footer-columns li {
-      font-size: 0.9rem;
       margin: 0.4rem 0;
     }
+
     .footer-bottom {
       text-align: center;
       margin-top: 2rem;
-      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="BETPOWER-2.png" alt="BetPower Logo">
+  <img src="BETPOWER-logo.png" alt="BetPower Logo">
   <div class="auth-buttons">
-    <button>Login</button>
-    <button>Register</button>
+    <button class="login">Log in</button>
+    <button class="join">Join now</button>
   </div>
 </header>
 
 <nav class="nav-menu">
-  <a href="#"><i class="fas fa-money-bill-wave"></i> Cashier</a>
-  <a href="#"><i class="fas fa-futbol"></i> Sports</a>
-  <a href="#"><i class="fas fa-dice"></i> Casino</a>
-  <a href="#"><i class="fas fa-horse-head"></i> Horses</a>
+  <div class="nav-item"><img src="icons/cashier.png" alt=""><span>Cashier</span></div><div class="nav-item"><img src="icons/sports.png" alt=""><span>Sports</span></div><div class="nav-item"><img src="icons/casino.png" alt=""><span>Casino</span></div><div class="nav-item"><img src="icons/racebook.png" alt=""><span>Racebook</span></div><div class="nav-item"><img src="icons/lotto.png" alt=""><span>Lotto</span></div><div class="nav-item"><img src="icons/promotions.png" alt=""><span>Promotions</span></div><div class="nav-item"><img src="icons/more.png" alt=""><span>More</span></div>
 </nav>
 
-<div class="banner">Your Game, Your Power.</div>
+<div class="banner-container">
+  <img src="banner.jpg" class="active" alt="Banner 1">
+  <img src="casino.jpg" alt="Banner 2">
+  <img src="sports.jpg" alt="Banner 3">
+</div>
 
-<section class="grid">
-  <div class="card"><img src="basketball-1.jpg" alt="Basketball 1"><h3>Basketball Betting</h3></div>
-  <div class="card"><img src="basketball-2.jpg" alt="Basketball 2"><h3>NBA Specials</h3></div>
-  <div class="card"><img src="college.jpg" alt="College"><h3>College Bets</h3></div>
-  <div class="card"><img src="esports.jpg" alt="Esports"><h3>Esports</h3></div>
-</section>
-
-<section class="betting-options">
-  <h2>BETTING OPTIONS</h2>
+<section class="section">
+  <h2>SPORTS CARDS</h2>
   <div class="grid">
-    <div class="card"><img src="casino.jpg" alt="Casino"><h3>Casino</h3></div>
-    <div class="card"><img src="sports.jpg" alt="Sports"><h3>Sports</h3></div>
-    <div class="card"><img src="racebook.jpg" alt="Racebook"><h3>Racebook</h3></div>
-    <div class="card"><img src="lotto.jpg" alt="Lotto"><h3>Lotto</h3></div>
-    <div class="card"><img src="live-casino.jpg" alt="Live Casino"><h3>Live Casino</h3></div>
+    <div class="card"><img src="basketball-1.jpg" alt=""><h3>Basketball Betting</h3></div><div class="card"><img src="basketball-2.jpg" alt=""><h3>NBA Specials</h3></div><div class="card"><img src="college.jpg" alt=""><h3>College Bets</h3></div><div class="card"><img src="esports.jpg" alt=""><h3>Esports</h3></div>
   </div>
 </section>
 
-<footer class="footer">
+<section class="section">
+  <h2>BETTING OPTIONS</h2>
+  <div class="grid">
+    <div class="card"><img src="casino.jpg" alt=""><h3>Casino</h3></div><div class="card"><img src="sports.jpg" alt=""><h3>Sports</h3></div><div class="card"><img src="racebook.jpg" alt=""><h3>Racebook</h3></div><div class="card"><img src="lotto.jpg" alt=""><h3>Lotto</h3></div><div class="card"><img src="live-casino.jpg" alt=""><h3>Live Casino</h3></div>
+  </div>
+</section>
+
+<footer>
   <div class="footer-columns">
-    <div>
-      <h4>Help Center</h4>
-      <ul>
-        <li>Support</li>
-        <li>FAQ</li>
-        <li>Terms of Service</li>
-        <li>Privacy Policy</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Betting</h4>
-      <ul>
-        <li>Sports Betting</li>
-        <li>Casino Games</li>
-        <li>Live Dealers</li>
-        <li>Horse Racing</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Promotions</h4>
-      <ul>
-        <li>Current Bonuses</li>
-        <li>VIP Club</li>
-        <li>Referral Program</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <ul>
-        <li>Chat with Us</li>
-        <li>Email</li>
-        <li>Phone: 1-888-BETPOWER</li>
-      </ul>
-    </div>
+    <div><h4>Help Center</h4><ul><li>Support</li><li>FAQ</li><li>Contact Us</li><li>Live Chat</li></ul></div>
+    <div><h4>Account</h4><ul><li>My Account</li><li>Cashier</li><li>Transactions</li><li>Security</li></ul></div>
+    <div><h4>Promotions</h4><ul><li>Welcome Bonus</li><li>Loyalty Program</li><li>Refer a Friend</li></ul></div>
+    <div><h4>Legal</h4><ul><li>Terms & Conditions</li><li>Privacy Policy</li><li>Responsible Gaming</li></ul></div>
   </div>
   <div class="footer-bottom">
     &copy; 2025 BetPower. All rights reserved.
   </div>
 </footer>
+
+<script>
+  let banners = document.querySelectorAll('.banner-container img');
+  let current = 0;
+  setInterval(() => {
+    banners[current].classList.remove('active');
+    current = (current + 1) % banners.length;
+    banners[current].classList.add('active');
+  }, 5000);
+</script>
 
 </body>
 </html>
