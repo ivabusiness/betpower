@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BetPower</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -22,8 +22,9 @@
     }
 
     header img {
-      height: 100px;
+      height: 140px;
       max-width: 100%;
+      object-fit: contain;
     }
 
     .auth-buttons {
@@ -51,19 +52,42 @@
 
     nav {
       background: #0e2a47;
-      padding: 0.8rem 1rem;
+      padding: 1rem;
       display: flex;
       justify-content: center;
       gap: 2rem;
-      flex-wrap: nowrap;
-      overflow-x: auto;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      white-space: nowrap;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background-color: #1f2d40;
+      min-width: 160px;
+      z-index: 1;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      color: white;
+      padding: 0.3rem 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     .carousel {
@@ -119,7 +143,7 @@
     .footer-columns {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 2rem;
+      gap: 1rem;
     }
 
     .footer-columns h4 {
@@ -157,31 +181,12 @@
     .privacy p {
       margin: 0;
     }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .auth-buttons {
-        width: 100%;
-        justify-content: flex-end;
-        padding-top: 0.5rem;
-      }
-
-      nav {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        gap: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="BETPOWER-2.png" alt="BetPower Logo" />
+  <img src="BETPOWER-2.png" alt="BetPower Logo">
   <div class="auth-buttons">
     <button class="login">Login</button>
     <button class="join">Join Now</button>
@@ -189,13 +194,17 @@
 </header>
 
 <nav>
-  <a href="#">Sports & Odds</a>
+  <a href="#">Sports</a>
   <a href="#">Live Betting</a>
   <a href="#">Casino</a>
   <a href="#">Racebook</a>
   <a href="#">Lotto</a>
-  <a href="#">Promotions</a>
-  <a href="#">More</a>
+  <div class="dropdown">
+    <a href="#">More</a>
+    <div class="dropdown-content">
+      <a href="#">Promotions</a>
+    </div>
+  </div>
 </nav>
 
 <div class="carousel" id="banner">GAME DAY</div>
@@ -235,7 +244,7 @@
 
 <div class="privacy">
   <p><a href="#" style="color: white; text-decoration: underline;">Privacy Policy & Terms of Service</a></p>
-  <img src="BETPOWER-2.png" alt="BetPower Logo" />
+  <img src="BETPOWER-2.png" alt="BetPower Logo">
 </div>
 
 <script>
