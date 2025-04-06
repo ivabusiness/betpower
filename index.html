@@ -2,65 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BetPower</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { margin: 0; font-family: 'Roboto', sans-serif; background: #0e1626; color: white; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #0e1626;
+      color: white;
+    }
 
     header {
       background: #0b1220;
-      padding: 1rem 2rem;
+      padding: 0.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     header img {
-      height: 80px;
+      height: 100px;
       max-width: 100%;
     }
 
     .auth-buttons {
       display: flex;
       gap: 1rem;
-      margin-top: 0.5rem;
     }
 
     .auth-buttons button {
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 1rem;
       font-weight: bold;
       border-radius: 5px;
       border: none;
       cursor: pointer;
     }
 
-    .auth-buttons .login { background: #28a745; color: white; }
-    .auth-buttons .join { background: #ff8c00; color: white; }
+    .auth-buttons .login {
+      background: #28a745;
+      color: white;
+    }
+
+    .auth-buttons .join {
+      background: #ff8c00;
+      color: white;
+    }
 
     nav {
       background: #0e2a47;
-      padding: 1rem;
+      padding: 0.8rem 1rem;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 2rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     .carousel {
       height: 400px;
-      background: #222;
+      background: url('run-2.png') no-repeat center center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: bold;
       text-shadow: 2px 2px 8px black;
     }
@@ -77,7 +89,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
       padding: 0 2rem;
     }
@@ -106,7 +118,7 @@
 
     .footer-columns {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 2rem;
     }
 
@@ -153,25 +165,15 @@
       }
 
       .auth-buttons {
-        justify-content: flex-start;
-        margin-top: 1rem;
-      }
-
-      .carousel {
-        height: 300px;
-        font-size: 2rem;
-        text-align: center;
-        padding: 1rem;
+        width: 100%;
+        justify-content: flex-end;
+        padding-top: 0.5rem;
       }
 
       nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      nav a {
-        padding: 0.3rem 0;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 1rem;
       }
     }
   </style>
@@ -179,7 +181,7 @@
 <body>
 
 <header>
-  <img src="BETPOWER-2.png" alt="BetPower Logo">
+  <img src="BETPOWER-2.png" alt="BetPower Logo" />
   <div class="auth-buttons">
     <button class="login">Login</button>
     <button class="join">Join Now</button>
@@ -233,7 +235,7 @@
 
 <div class="privacy">
   <p><a href="#" style="color: white; text-decoration: underline;">Privacy Policy & Terms of Service</a></p>
-  <img src="BETPOWER-2.png" alt="BetPower Logo">
+  <img src="BETPOWER-2.png" alt="BetPower Logo" />
 </div>
 
 <script>
