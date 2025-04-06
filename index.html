@@ -7,51 +7,79 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body { margin: 0; font-family: 'Roboto', sans-serif; background: #0e1626; color: white; }
-    header { background: #0b1220; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header {
+      background: #0b1220;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     header img { height: 60px; }
     .auth-buttons button {
-      margin-left: 1rem; padding: 0.5rem 1rem;
-      font-weight: bold; border-radius: 5px; border: none; cursor: pointer;
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
     }
     .auth-buttons .login { background: #28a745; color: white; }
     .auth-buttons .join { background: #ff8c00; color: white; }
 
     nav {
-      background: #0e2a47; padding: 1rem;
-      display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+      background: #0e2a47;
+      padding: 1rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav a {
-      color: white; text-decoration: none; font-weight: bold;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .carousel {
       height: 400px;
       background: url('run-2.jpeg') no-repeat center center/cover;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; font-weight: bold; text-shadow: 2px 2px 8px black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px black;
     }
 
     .section { padding: 2rem; text-align: center; }
     .section h2 { font-size: 2rem; margin-bottom: 1.5rem; }
 
     .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem; padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 0 2rem;
     }
 
     .card {
-      background: #16263a; padding: 1rem;
-      border-radius: 10px; text-align: center;
+      background: #16263a;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
     }
 
     .card img {
-      width: 100%; height: 130px; object-fit: cover;
-      border-radius: 8px; margin-bottom: 0.5rem;
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
     }
 
     footer {
-      background: #0b1220; color: white;
+      background: #0b1220;
+      color: white;
       padding: 3rem 2rem 1rem;
       font-size: 0.9rem;
     }
@@ -86,12 +114,16 @@
     .privacy {
       background: #0e2a47;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
     }
 
     .privacy img {
       height: 50px;
       margin-top: 1rem;
+    }
+
+    .privacy p {
+      margin: 0;
     }
   </style>
 </head>
@@ -120,21 +152,21 @@
 <section class="section">
   <h2>Trending Now</h2>
   <div class="grid">
-    <div class="card"><img src="1.jpeg"><h3>Basketball Betting</h3></div>
-    <div class="card"><img src="2.jpeg"><h3>NBA Specials</h3></div>
-    <div class="card"><img src="3.jpeg"><h3>College Bets</h3></div>
-    <div class="card"><img src="4.jpeg"><h3>Esports</h3></div>
+    <div class="card"><img src="1.jpeg" alt="Basketball"><h3>Basketball Betting</h3></div>
+    <div class="card"><img src="2.jpeg" alt="NBA"><h3>NBA Specials</h3></div>
+    <div class="card"><img src="3.jpeg" alt="College"><h3>College Bets</h3></div>
+    <div class="card"><img src="4.jpeg" alt="Esports"><h3>Esports</h3></div>
   </div>
 </section>
 
 <section class="section">
   <h2>Betting Options</h2>
   <div class="grid">
-    <div class="card"><img src="run-2.jpeg"><h3>Casino</h3></div>
-    <div class="card"><img src="run-3.jpeg"><h3>Sports</h3></div>
-    <div class="card"><img src="5.jpeg"><h3>Racebook</h3></div>
-    <div class="card"><img src="lotto.jpg"><h3>Lotto</h3></div>
-    <div class="card"><img src="live-casino.jpg"><h3>Live Casino</h3></div>
+    <div class="card"><img src="run-2.jpeg" alt="Casino"><h3>Casino</h3></div>
+    <div class="card"><img src="run-3.jpeg" alt="Sports"><h3>Sports</h3></div>
+    <div class="card"><img src="5.jpeg" alt="Racebook"><h3>Racebook</h3></div>
+    <div class="card"><img src="lotto.jpg" alt="Lotto"><h3>Lotto</h3></div>
+    <div class="card"><img src="live-casino.jpg" alt="Live Casino"><h3>Live Casino</h3></div>
   </div>
 </section>
 
