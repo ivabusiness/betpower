@@ -5,12 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BetPower</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Arial', sans-serif;
       background: #0e1626;
       color: white;
     }
@@ -50,19 +49,19 @@
     }
 
     .auth-buttons .join {
-      background: #ffc107;
-      color: black;
+      background: #000000;
+      color: white;
     }
 
     nav {
       background: #0e2a47;
       padding: 0.6rem 1rem;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
+      justify-content: space-between;
+      gap: 4rem;
       flex-wrap: nowrap;
       overflow-x: auto;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     nav a {
@@ -75,120 +74,6 @@
     .carousel {
       background: url('run-2.png') no-repeat center center/cover;
       height: 400px;
-    }
-
-    .section {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      padding: 0 2rem;
-    }
-
-    .card {
-      background: #16263a;
-      padding: 1rem;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      background: #0b1220;
-      color: white;
-      padding: 2rem 1rem 1rem;
-      font-size: 0.9rem;
-    }
-
-    .footer-columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0.5rem;
-    }
-
-    .footer-columns h4 {
-      border-bottom: 1px solid #444;
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.3rem;
-    }
-
-    .footer-columns ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-columns li {
-      margin: 0.4rem 0;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.85rem;
-    }
-
-    .privacy {
-      background: #0e2a47;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .privacy img {
-      height: 50px;
-      margin-top: 1rem;
-    }
-
-    .privacy p {
-      margin: 0;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 0.5rem;
-        flex-direction: row;
-        align-items: center;
-      }
-
-      header img {
-        height: 90px;
-      }
-
-      .auth-buttons {
-        gap: 0.5rem;
-      }
-
-      .auth-buttons button {
-        padding: 0.4rem 0.9rem;
-        font-size: 0.85rem;
-      }
-
-      .carousel {
-        height: 220px;
-      }
-
-      .grid.trending .card:nth-child(n+3) {
-        display: none;
-      }
-
-      .section {
-        padding-top: 0.5rem;
-      }
     }
   </style>
 </head>
@@ -213,44 +98,6 @@
 </nav>
 
 <div class="carousel"></div>
-
-<section class="section">
-  <h2>Trending Now</h2>
-  <div class="grid trending">
-    <div class="card"><img src="1.png" alt="Basketball"><h3>Basketball Betting</h3></div>
-    <div class="card"><img src="2.png" alt="NBA"><h3>NBA Specials</h3></div>
-    <div class="card"><img src="3.png" alt="College"><h3>College Bets</h3></div>
-    <div class="card"><img src="4.png" alt="Esports"><h3>Esports</h3></div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Betting Options</h2>
-  <div class="grid">
-    <div class="card"><img src="run-2.png"><h3>Casino</h3></div>
-    <div class="card"><img src="run-3.png"><h3>Sports</h3></div>
-    <div class="card"><img src="5.png"><h3>Racebook</h3></div>
-    <div class="card"><img src="lotto.png"><h3>Lotto</h3></div>
-    <div class="card"><img src="live-casino.png"><h3>Live Casino</h3></div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-columns">
-    <div><h4>Sports</h4><ul><li>Live Odds</li><li>Upcoming Events</li><li>Results</li></ul></div>
-    <div><h4>Casino</h4><ul><li>Slots</li><li>Live Dealer</li><li>Blackjack</li></ul></div>
-    <div><h4>Promotions</h4><ul><li>Bonuses</li><li>Refer a Friend</li><li>Loyalty Program</li></ul></div>
-    <div><h4>Support</h4><ul><li>Contact</li><li>FAQs</li><li>Live Chat</li></ul></div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2025 BetPower. All rights reserved.
-  </div>
-</footer>
-
-<div class="privacy">
-  <p><a href="#" style="color: white; text-decoration: underline;">Privacy Policy & Terms of Service</a></p>
-  <img src="BETPOWER-2.png" alt="BetPower Logo">
-</div>
 
 </body>
 </html>
