@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BetPower</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,23 +16,16 @@
 
     header {
       background: #0b1220;
-      padding: 0.8rem 1rem;
+      padding: 0.6rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     header img {
-      height: 80px;
-      width: 280px;
+      height: 60px;
+      width: auto;
       object-fit: contain;
-    }
-
-    @media (max-width: 768px) {
-      header img {
-        height: auto;
-        max-width: 220px;
-      }
     }
 
     .auth-buttons {
@@ -61,48 +54,131 @@
       border: 1px solid white;
     }
 
-    .menu-carousel {
+    nav {
       background: #0e2a47;
-      overflow: hidden;
-      position: relative;
-      height: 60px;
-    }
-
-    .menu-track {
+      padding: 0.6rem 1rem;
       display: flex;
-      width: fit-content;
-      animation: scrollMenu 10s linear infinite;
-    }
-
-    .menu-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 200px;
-      padding: 0 1rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
       font-size: 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
       font-weight: bold;
       white-space: nowrap;
     }
 
-    .menu-item img {
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
-    }
-
-    @keyframes scrollMenu {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-200px); }
-      50% { transform: translateX(-400px); }
-      75% { transform: translateX(-600px); }
-      100% { transform: translateX(0); }
+    .carousel {
+      background: url('run-2.png') no-repeat center center/cover;
+      height: 400px;
     }
 
     @media (max-width: 768px) {
-      .menu-carousel {
+      nav {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      header img {
+        height: 45px;
+      }
+
+      .auth-buttons button {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+      }
+
+      .carousel {
+        height: 220px;
+      }
+
+      .grid.trending .card:nth-child(n+3) {
         display: none;
       }
+    }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 0 2rem;
+    }
+
+    .card {
+      background: #16263a;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: #0b1220;
+      color: white;
+      padding: 2rem 1rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .footer-columns h4 {
+      border-bottom: 1px solid #444;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
+    }
+
+    .footer-columns ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-columns li {
+      margin: 0.4rem 0;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+
+    .privacy {
+      background: #0e2a47;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .privacy img {
+      height: 50px;
+      margin-top: 1rem;
+    }
+
+    .privacy p {
+      margin: 0;
     }
   </style>
 </head>
@@ -116,13 +192,56 @@
   </div>
 </header>
 
-<div class="menu-carousel">
-  <div class="menu-track">
-    <div class="menu-item"><img src="sports.png" alt="">SPORTS</div>
-    <div class="menu-item"><img src="livebetting.png" alt="">LIVE BETTING</div>
-    <div class="menu-item"><img src="casino.png" alt="">CASINO</div>
-    <div class="menu-item"><img src="promotions.png" alt="">PROMOTIONS</div>
+<nav>
+  <a href="#">Sports</a>
+  <a href="#">Live Betting</a>
+  <a href="#">Casino</a>
+  <a href="#">Live Casino</a>
+  <a href="#">Lotto</a>
+  <a href="#">Horse Racing</a>
+  <a href="#">Promotions</a>
+  <a href="#">Loyalty</a>
+  <a href="#">More</a>
+</nav>
+
+<div class="carousel"></div>
+
+<section class="section">
+  <h2>Trending Now</h2>
+  <div class="grid trending">
+    <div class="card"><img src="1.png" alt="Basketball"><h3>Basketball Betting</h3></div>
+    <div class="card"><img src="2.png" alt="NBA"><h3>NBA Specials</h3></div>
+    <div class="card"><img src="3.png" alt="College"><h3>College Bets</h3></div>
+    <div class="card"><img src="4.png" alt="Esports"><h3>Esports</h3></div>
   </div>
+</section>
+
+<section class="section">
+  <h2>Betting Options</h2>
+  <div class="grid">
+    <div class="card"><img src="run-2.png"><h3>Casino</h3></div>
+    <div class="card"><img src="run-3.png"><h3>Sports</h3></div>
+    <div class="card"><img src="5.png"><h3>Racebook</h3></div>
+    <div class="card"><img src="lotto.png"><h3>Lotto</h3></div>
+    <div class="card"><img src="live-casino.png"><h3>Live Casino</h3></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-columns">
+    <div><h4>Sports</h4><ul><li>Live Odds</li><li>Upcoming Events</li><li>Results</li></ul></div>
+    <div><h4>Casino</h4><ul><li>Slots</li><li>Live Dealer</li><li>Blackjack</li></ul></div>
+    <div><h4>Promotions</h4><ul><li>Bonuses</li><li>Refer a Friend</li><li>Loyalty Program</li></ul></div>
+    <div><h4>Support</h4><ul><li>Contact</li><li>FAQs</li><li>Live Chat</li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 BetPower. All rights reserved.
+  </div>
+</footer>
+
+<div class="privacy">
+  <p><a href="#" style="color: white; text-decoration: underline;">Privacy Policy & Terms of Service</a></p>
+  <img src="BETPOWER-2.png" alt="BetPower Logo">
 </div>
 
 </body>
