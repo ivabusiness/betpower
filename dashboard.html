@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – BetPower</title>
+  <style>
+    body {
+      background: #0e2a47;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+    }
+
+    header {
+      background: #0b1220;
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      height: 14px;
+    }
+
+    .btn-cashier {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .top-stats {
+      display: flex;
+      justify-content: space-around;
+      padding: 1rem;
+      background: #1f2d40;
+      text-align: center;
+    }
+
+    .top-stats div {
+      flex: 1;
+      border-right: 1px solid #444;
+    }
+
+    .top-stats div:last-child {
+      border-right: none;
+    }
+
+    .top-stats h4 {
+      margin: 0.3rem 0;
+    }
+
+    .dashboard-container {
+      display: flex;
+      min-height: 80vh;
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #122b45;
+      padding: 1rem;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+
+    .sidebar ul li:hover {
+      color: #28a745;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      background: #0e2a47;
+    }
+
+    .main-content h2 {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="BETPOWER-2.png" alt="Logo" />
+  <button class="btn-cashier" onclick="openCashier()">CASHIER</button>
+</header>
+
+<section class="top-stats">
+  <div>
+    <h4>Balance</h4>
+    <p>$1,250.00</p>
+  </div>
+  <div>
+    <h4>Pending</h4>
+    <p>$230.00</p>
+  </div>
+  <div>
+    <h4>Wagers</h4>
+    <p>12</p>
+  </div>
+  <div>
+    <h4>History</h4>
+    <p>View</p>
+  </div>
+  <div>
+    <h4>Transactions</h4>
+    <p>Recent</p>
+  </div>
+</section>
+
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <h3>Bet Schedule</h3>
+    <ul>
+      <li>Football</li>
+      <li>Basketball</li>
+      <li>Baseball</li>
+      <li>Soccer</li>
+      <li>Hockey</li>
+      <li>Tennis</li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <h2>Select a sport to view matches</h2>
+    <p>This area will dynamically display games, betting options, and odds based on selection.</p>
+  </main>
+</div>
+
+<script>
+  function openCashier() {
+    alert("Cashier modal or page coming soon!");
+  }
+
+  // Redirection protection
+  const user = JSON.parse(localStorage.getItem("userData"));
+  if (!user) {
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
