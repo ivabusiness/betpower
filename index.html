@@ -1,9 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BetPower</title>
+  <style>
+    .nav-container {
+      background: #0e2a47;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 2rem;
+      font-size: 0.8rem;
+    }
+
+    .nav-item {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .more-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background: #1f2d40;
+      padding: 0.5rem;
+      border-radius: 4px;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .dropdown-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.3rem 0;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-only {
+        display: inline;
+      }
+      .mobile-only {
+        display: none;
+      }
+      .dropdown-menu {
+        position: static;
+        display: flex !important;
+        background: none;
+        padding: 0;
+        flex-direction: row;
+      }
+    }
+  </style>
 </head>
 <body style="background:#0e2a47;font-family:Arial,sans-serif;color:white;margin:0;">
 
@@ -15,15 +74,29 @@
   </div>
 </header>
 
-<nav style="background:#0e2a47;padding:1rem;display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;font-size:0.8rem;">
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">SPORTS</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">LIVE BETTING</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">CASINO</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">RACEBOOK</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">LIVE DEALER</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">LOTTO</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">LOYALTY</a>
-  <a href="#" style="color:white;text-decoration:none;font-weight:bold;">PROMOTIONS</a>
+<nav class="nav-container">
+  <a href="#" class="nav-item">SPORTS</a>
+  <a href="#" class="nav-item">LIVE BETTING</a>
+  <a href="#" class="nav-item">CASINO</a>
+
+  <!-- MOBILE More Menu -->
+  <div class="more-dropdown mobile-only" onclick="toggleDropdown()">
+    <span class="nav-item">MORE ▾</span>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="#">RACEBOOK</a>
+      <a href="#">LIVE DEALER</a>
+      <a href="#">LOTTO</a>
+      <a href="#">LOYALTY</a>
+      <a href="#">PROMOTIONS</a>
+    </div>
+  </div>
+
+  <!-- DESKTOP Full Menu -->
+  <a href="#" class="nav-item desktop-only">RACEBOOK</a>
+  <a href="#" class="nav-item desktop-only">LIVE DEALER</a>
+  <a href="#" class="nav-item desktop-only">LOTTO</a>
+  <a href="#" class="nav-item desktop-only">LOYALTY</a>
+  <a href="#" class="nav-item desktop-only">PROMOTIONS</a>
 </nav>
 
 <div style="height:300px;background:url('run-2.png') no-repeat center center/cover;"></div>
@@ -64,6 +137,13 @@
   <p><a href="#" style="color:white;text-decoration:underline;">Privacy Policy & Terms of Service</a></p>
   <img src="BETPOWER-2.png" alt="Logo" style="height:28px;margin-top:1rem;">
 </div>
+
+<script>
+  function toggleDropdown() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
 
 </body>
 </html>
