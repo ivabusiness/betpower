@@ -49,9 +49,8 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      column-gap: 2rem;
+      gap: 2rem;
       font-size: 0.8rem;
-      position: relative;
     }
 
     .nav-item {
@@ -60,53 +59,50 @@
       font-weight: bold;
     }
 
-    .desktop-only {
+    .modal-overlay {
       display: none;
-    }
-
-    .more-dropdown {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: -20px;
-      background: #1f2d40;
-      padding: 0.5rem;
-      border-radius: 4px;
-      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
       z-index: 1000;
     }
 
-    .dropdown-menu a {
-      color: white;
-      text-decoration: none;
-      padding: 0.3rem 0;
-      white-space: nowrap;
+    .modal {
+      background: #0b1220;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 0 10px #000;
     }
 
-    @media (min-width: 768px) {
-      .desktop-only {
-        display: inline;
-      }
-      .mobile-only {
-        display: none;
-      }
-      .dropdown-menu {
-        position: static;
-        display: flex !important;
-        background: none;
-        padding: 0;
-        flex-direction: row;
-        margin-top: 0;
-      }
-      .more-dropdown {
-        flex-direction: row;
-        align-items: center;
-      }
+    .modal input {
+      padding: 0.6rem;
+      border-radius: 6px;
+      border: none;
+      font-family: Arial;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .modal button {
+      background: #28a745;
+      color: white;
+      padding: 0.6rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #welcomeMessage {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.2rem;
     }
   </style>
 </head>
@@ -116,7 +112,7 @@
   <img src="BETPOWER-2.png" alt="Logo" />
   <div style="display:flex;gap:0.8rem;">
     <button class="btn-login">LOGIN</button>
-    <button class="btn-join">JOIN</button>
+    <button class="btn-join" onclick="openModal()">JOIN</button>
   </div>
 </header>
 
@@ -124,26 +120,33 @@
   <a href="#" class="nav-item">SPORTS</a>
   <a href="#" class="nav-item">LIVE BETTING</a>
   <a href="#" class="nav-item">CASINO</a>
-
-  <div class="more-dropdown mobile-only" onclick="toggleDropdown()">
-    <span class="nav-item">MORE ▾</span>
-    <div id="dropdownMenu" class="dropdown-menu">
-      <a href="#">RACEBOOK</a>
-      <a href="#">LIVE DEALER</a>
-      <a href="#">LOTTO</a>
-      <a href="#">LOYALTY</a>
-      <a href="#">PROMOTIONS</a>
-    </div>
-  </div>
-
-  <a href="#" class="nav-item desktop-only">RACEBOOK</a>
-  <a href="#" class="nav-item desktop-only">LIVE DEALER</a>
-  <a href="#" class="nav-item desktop-only">LOTTO</a>
-  <a href="#" class="nav-item desktop-only">LOYALTY</a>
-  <a href="#" class="nav-item desktop-only">PROMOTIONS</a>
+  <a href="#" class="nav-item">RACEBOOK</a>
+  <a href="#" class="nav-item">LIVE DEALER</a>
+  <a href="#" class="nav-item">LOTTO</a>
+  <a href="#" class="nav-item">LOYALTY</a>
+  <a href="#" class="nav-item">PROMOTIONS</a>
 </nav>
 
 <div style="height:300px;background:url('run-2.png') no-repeat center center/cover;"></div>
+
+<!-- MODAL JOIN FORM -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal">
+    <form id="joinForm" onsubmit="return handleJoin()">
+      <h2 style="text-align:center;">Create Your Account</h2>
+      <input type="text" id="firstName" placeholder="First Name" required>
+      <input type="text" id="lastName" placeholder="Last Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit">Join Now</button>
+    </form>
+  </div>
+</div>
+
+<!-- MENSAJE DE BIENVENIDA -->
+<div id="welcomeMessage"></div>
 
 <section style="padding:2rem;text-align:center;">
   <h2 style="margin-bottom:1rem;font-size:2rem;">Trending Now</h2>
@@ -167,25 +170,6 @@
   </div>
 </section>
 
-<!-- JOIN FORM (hidden initially) -->
-<section id="joinSection" style="display:none;background:#0b1220;padding:2rem;color:white;justify-content:center;">
-  <form id="joinForm" onsubmit="return handleSubmit()" style="max-width:400px;margin:auto;width:100%;display:flex;flex-direction:column;gap:1rem;">
-    <h2 style="text-align:center;">Create Your Account</h2>
-
-    <input type="text" id="firstName" placeholder="First Name" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
-    <input type="text" id="lastName" placeholder="Last Name" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
-    <input type="email" id="email" placeholder="Email Address" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
-    <input type="tel" id="phone" placeholder="Phone Number" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
-    <input type="password" id="password" placeholder="Password" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
-    <input type="password" id="confirmPassword" placeholder="Confirm Password" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
-
-    <button type="submit" style="background:#28a745;color:white;padding:0.6rem;border:none;border-radius:6px;font-weight:bold;cursor:pointer;">
-      Join Now
-    </button>
-    <p id="formMessage" style="text-align:center;color:#28a745;"></p>
-  </form>
-</section>
-
 <footer style="background:#0b1220;color:white;padding:2rem;">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;text-align:left;">
     <div><h4>Sports</h4><ul><li>Live Odds</li><li>Upcoming Events</li><li>Results</li></ul></div>
@@ -202,43 +186,39 @@
 </div>
 
 <script>
-  function toggleDropdown() {
-    const menu = document.getElementById('dropdownMenu');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  function openModal() {
+    document.getElementById('modalOverlay').style.display = 'flex';
   }
 
-  function handleSubmit() {
+  function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+  }
+
+  function handleJoin() {
     const firstName = document.getElementById("firstName").value.trim();
     const lastName = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
-    const message = document.getElementById("formMessage");
+    const welcome = document.getElementById("welcomeMessage");
 
     if (password !== confirmPassword) {
-      message.textContent = "Passwords do not match.";
-      message.style.color = "red";
+      alert("Passwords do not match.");
       return false;
     }
 
-    const userData = { firstName, lastName, email, phone };
+    const accountNumber = Math.floor(100000 + Math.random() * 900000);
+    const userData = { firstName, lastName, email, phone, accountNumber };
     localStorage.setItem("userData", JSON.stringify(userData));
 
-    message.textContent = "Account created successfully!";
-    message.style.color = "#28a745";
-
-    document.getElementById("joinForm").reset();
+    closeModal();
+    welcome.style.display = "block";
+    welcome.innerHTML = `<strong>Welcome, ${firstName}!</strong><br>Your Account Number is <strong>#${accountNumber}</strong>`;
     return false;
   }
-
-  // Mostrar el formulario JOIN al hacer clic
-  document.querySelector('.btn-join').addEventListener('click', function () {
-    const section = document.getElementById('joinSection');
-    section.style.display = 'flex';
-    section.scrollIntoView({ behavior: 'smooth' });
-  });
 </script>
 
 </body>
 </html>
+
