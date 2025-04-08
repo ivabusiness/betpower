@@ -59,6 +59,43 @@
       font-weight: bold;
     }
 
+    .desktop-only {
+      display: none;
+    }
+
+    .more-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      background: #1f2d40;
+      padding: 0.5rem;
+      border-radius: 4px;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .dropdown-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.3rem 0;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-only {
+        display: inline;
+      }
+      .mobile-only {
+        display: none;
+      }
+    }
+
     .modal-overlay {
       display: none;
       position: fixed;
@@ -97,13 +134,6 @@
       cursor: pointer;
       width: 100%;
     }
-
-    #welcomeMessage {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-      font-size: 1.2rem;
-    }
   </style>
 </head>
 <body>
@@ -117,19 +147,30 @@
 </header>
 
 <nav class="nav-container">
-  <a href="#" class="nav-item">SPORTS</a>
-  <a href="#" class="nav-item">LIVE BETTING</a>
-  <a href="#" class="nav-item">CASINO</a>
-  <a href="#" class="nav-item">RACEBOOK</a>
-  <a href="#" class="nav-item">LIVE DEALER</a>
-  <a href="#" class="nav-item">LOTTO</a>
-  <a href="#" class="nav-item">LOYALTY</a>
-  <a href="#" class="nav-item">PROMOTIONS</a>
+  <a href="#" class="nav-item mobile-only">SPORTS</a>
+  <a href="#" class="nav-item mobile-only">LIVE BETTING</a>
+  <a href="#" class="nav-item mobile-only">CASINO</a>
+  <div class="more-dropdown mobile-only" onclick="toggleDropdown()">
+    <span class="nav-item">MORE ▾</span>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="#">RACEBOOK</a>
+      <a href="#">LIVE DEALER</a>
+      <a href="#">LOTTO</a>
+      <a href="#">LOYALTY</a>
+      <a href="#">PROMOTIONS</a>
+    </div>
+  </div>
+  <a href="#" class="nav-item desktop-only">SPORTS</a>
+  <a href="#" class="nav-item desktop-only">LIVE BETTING</a>
+  <a href="#" class="nav-item desktop-only">CASINO</a>
+  <a href="#" class="nav-item desktop-only">RACEBOOK</a>
+  <a href="#" class="nav-item desktop-only">LIVE DEALER</a>
+  <a href="#" class="nav-item desktop-only">LOTTO</a>
+  <a href="#" class="nav-item desktop-only">LOYALTY</a>
+  <a href="#" class="nav-item desktop-only">PROMOTIONS</a>
 </nav>
 
-<div style="height:300px;background:url('run-2.png') no-repeat center center/cover;"></div>
-
-<!-- MODAL JOIN FORM -->
+<!-- MODAL JOIN -->
 <div id="modalOverlay" class="modal-overlay">
   <div class="modal">
     <form id="joinForm" onsubmit="return handleJoin()">
@@ -145,8 +186,10 @@
   </div>
 </div>
 
-<!-- MENSAJE DE BIENVENIDA -->
-<div id="welcomeMessage"></div>
+<!-- MODAL WELCOME -->
+<div id="welcomeModal" class="modal-overlay">
+  <div class="modal" id="welcomeContent"></div>
+</div>
 
 <section style="padding:2rem;text-align:center;">
   <h2 style="margin-bottom:1rem;font-size:2rem;">Trending Now</h2>
@@ -186,6 +229,11 @@
 </div>
 
 <script>
+  function toggleDropdown() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+
   function openModal() {
     document.getElementById('modalOverlay').style.display = 'flex';
   }
@@ -201,7 +249,6 @@
     const phone = document.getElementById("phone").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
-    const welcome = document.getElementById("welcomeMessage");
 
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
@@ -213,12 +260,23 @@
     localStorage.setItem("userData", JSON.stringify(userData));
 
     closeModal();
-    welcome.style.display = "block";
-    welcome.innerHTML = `<strong>Welcome, ${firstName}!</strong><br>Your Account Number is <strong>#${accountNumber}</strong>`;
+
+    const welcomeModal = document.getElementById('welcomeModal');
+    const welcomeContent = document.getElementById('welcomeContent');
+    welcomeContent.innerHTML = `
+      <h2 style="text-align:center;">Welcome, ${firstName}!</h2>
+      <p style="text-align:center;margin:1rem 0;">Your Account Number is <strong>#${accountNumber}</strong></p>
+      <button onclick="closeWelcome()">Continue</button>
+    `;
+    welcomeModal.style.display = "flex";
+
     return false;
+  }
+
+  function closeWelcome() {
+    document.getElementById('welcomeModal').style.display = 'none';
   }
 </script>
 
 </body>
 </html>
-
