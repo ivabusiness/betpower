@@ -99,6 +99,7 @@
       flex-wrap: wrap;
       gap: 1.5rem;
       font-size: 0.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .main-menu a {
@@ -111,17 +112,16 @@
       display: none;
     }
 
-   .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: -30px; /* se mueve un poco a la izquierda */
-  min-width: 160px;
-  background: #1f2d40;
-  padding: 0.5rem;
-  border-radius: 4px;
-  z-index: 10;
-}
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -30px;
+      min-width: 160px;
+      background: #1f2d40;
+      padding: 0.5rem;
+      border-radius: 4px;
+      z-index: 10;
     }
 
     .more-dropdown {
@@ -218,7 +218,7 @@
   <a href="#" class="nav-item">CASINO</a>
 
   <div class="more-dropdown mobile-only">
-    <span class="nav-item">MORE ▾</span>
+    <span class="nav-item" style="font-weight:bold;">MORE ▾</span>
     <div class="dropdown-menu">
       <a href="#">RACEBOOK</a><br>
       <a href="#">LIVE DEALER</a><br>
