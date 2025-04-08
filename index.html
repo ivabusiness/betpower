@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BetPower - Join</title>
+  <title>BetPower</title>
   <style>
     body {
       background: #0e2a47;
@@ -43,101 +43,195 @@
       border: 1px solid white;
     }
 
-    section.join {
-      background: #0b1220;
-      padding: 2rem;
+    .nav-container {
+      background: #0e2a47;
+      padding: 1rem;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 2rem;
+      font-size: 0.8rem;
+      position: relative;
     }
 
-    form {
-      max-width: 400px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    form h2 {
-      text-align: center;
-    }
-
-    input {
-      padding: 0.6rem;
-      border-radius: 6px;
-      border: none;
-      font-family: Arial;
-    }
-
-    button[type="submit"] {
-      background: #28a745;
+    .nav-item {
       color: white;
-      padding: 0.6rem;
-      border: none;
-      border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .more-dropdown {
+      position: relative;
       cursor: pointer;
     }
 
-    #formMessage {
-      text-align: center;
-      color: #28a745;
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      background: #1f2d40;
+      padding: 0.5rem;
+      border-radius: 4px;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .dropdown-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.3rem 0;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-only {
+        display: inline;
+      }
+      .mobile-only {
+        display: none;
+      }
+      .dropdown-menu {
+        position: static;
+        display: flex !important;
+        background: none;
+        padding: 0;
+        flex-direction: row;
+        margin-top: 0;
+      }
+      .more-dropdown {
+        flex-direction: row;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="BETPOWER-2.png" alt="Logo" />
-    <div style="display:flex;gap:0.8rem;">
-      <button class="btn-login">LOGIN</button>
-      <button class="btn-join">JOIN</button>
+<header>
+  <img src="BETPOWER-2.png" alt="Logo" />
+  <div style="display:flex;gap:0.8rem;">
+    <button class="btn-login">LOGIN</button>
+    <button class="btn-join">JOIN</button>
+  </div>
+</header>
+
+<nav class="nav-container">
+  <a href="#" class="nav-item">SPORTS</a>
+  <a href="#" class="nav-item">LIVE BETTING</a>
+  <a href="#" class="nav-item">CASINO</a>
+
+  <div class="more-dropdown mobile-only" onclick="toggleDropdown()">
+    <span class="nav-item">MORE ▾</span>
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="#">RACEBOOK</a>
+      <a href="#">LIVE DEALER</a>
+      <a href="#">LOTTO</a>
+      <a href="#">LOYALTY</a>
+      <a href="#">PROMOTIONS</a>
     </div>
-  </header>
+  </div>
 
-  <section class="join">
-    <form id="joinForm" onsubmit="return handleSubmit()">
-      <h2>Create Your Account</h2>
+  <a href="#" class="nav-item desktop-only">RACEBOOK</a>
+  <a href="#" class="nav-item desktop-only">LIVE DEALER</a>
+  <a href="#" class="nav-item desktop-only">LOTTO</a>
+  <a href="#" class="nav-item desktop-only">LOYALTY</a>
+  <a href="#" class="nav-item desktop-only">PROMOTIONS</a>
+</nav>
 
-      <input type="text" id="firstName" placeholder="First Name" required />
-      <input type="text" id="lastName" placeholder="Last Name" required />
-      <input type="email" id="email" placeholder="Email Address" required />
-      <input type="tel" id="phone" placeholder="Phone Number" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+<div style="height:300px;background:url('run-2.png') no-repeat center center/cover;"></div>
 
-      <button type="submit">Join Now</button>
-      <p id="formMessage"></p>
-    </form>
-  </section>
+<section style="padding:2rem;text-align:center;">
+  <h2 style="margin-bottom:1rem;font-size:2rem;">Trending Now</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+    <div><img src="1.png" style="width:100%"><h3>Basketball Betting</h3></div>
+    <div><img src="2.png" style="width:100%"><h3>NBA Specials</h3></div>
+    <div><img src="3.png" style="width:100%"><h3>College Bets</h3></div>
+    <div><img src="4.png" style="width:100%"><h3>Esports</h3></div>
+  </div>
+</section>
 
-  <script>
-    function handleSubmit() {
-      const firstName = document.getElementById("firstName").value.trim();
-      const lastName = document.getElementById("lastName").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-      const message = document.getElementById("formMessage");
+<section style="padding:2rem;text-align:center;">
+  <h2 style="margin-bottom:1rem;font-size:2rem;">Betting Options</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+    <div><img src="run-2.png" style="width:100%"><h3>Casino</h3></div>
+    <div><img src="run-3.png" style="width:100%"><h3>Sports</h3></div>
+    <div><img src="5.png" style="width:100%"><h3>Racebook</h3></div>
+    <div><img src="lotto1.png" style="width:100%"><h3>Lotto</h3></div>
+    <div><img src="live-casino.png" style="width:100%"><h3>Live Casino</h3></div>
+    <div><img src="live-dealer.png" style="width:100%"><h3>Live Dealer</h3></div>
+  </div>
+</section>
 
-      if (password !== confirmPassword) {
-        message.textContent = "Passwords do not match.";
-        message.style.color = "red";
-        return false;
-      }
+<!-- JOIN FORM -->
+<section style="background:#0b1220;padding:2rem;color:white;display:flex;justify-content:center;">
+  <form id="joinForm" onsubmit="return handleSubmit()" style="max-width:400px;width:100%;display:flex;flex-direction:column;gap:1rem;">
+    <h2 style="text-align:center;">Create Your Account</h2>
 
-      // Simulate saving data locally
-      const userData = { firstName, lastName, email, phone };
-      localStorage.setItem("userData", JSON.stringify(userData));
+    <input type="text" id="firstName" placeholder="First Name" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
+    <input type="text" id="lastName" placeholder="Last Name" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
+    <input type="email" id="email" placeholder="Email Address" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
+    <input type="tel" id="phone" placeholder="Phone Number" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
+    <input type="password" id="password" placeholder="Password" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required style="padding:0.6rem;border-radius:6px;border:none;font-family:Arial;">
 
-      message.textContent = "Account created successfully!";
-      message.style.color = "#28a745";
+    <button type="submit" style="background:#28a745;color:white;padding:0.6rem;border:none;border-radius:6px;font-weight:bold;cursor:pointer;">
+      Join Now
+    </button>
+    <p id="formMessage" style="text-align:center;color:#28a745;"></p>
+  </form>
+</section>
 
-      document.getElementById("joinForm").reset();
+<footer style="background:#0b1220;color:white;padding:2rem;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;text-align:left;">
+    <div><h4>Sports</h4><ul><li>Live Odds</li><li>Upcoming Events</li><li>Results</li></ul></div>
+    <div><h4>Casino</h4><ul><li>Slots</li><li>Live Dealer</li><li>Blackjack</li></ul></div>
+    <div><h4>Promotions</h4><ul><li>Bonuses</li><li>Refer a Friend</li><li>Loyalty Program</li></ul></div>
+    <div><h4>Support</h4><ul><li>Contact</li><li>FAQs</li><li>Live Chat</li></ul></div>
+  </div>
+  <p style="text-align:center;margin-top:2rem;">&copy; 2025 BetPower. All rights reserved.</p>
+</footer>
+
+<div style="background:#0e2a47;text-align:center;padding:2rem;">
+  <p><a href="#" style="color:white;text-decoration:underline;">Privacy Policy & Terms of Service</a></p>
+  <img src="BETPOWER-2.png" alt="Logo" style="height:28px;margin-top:1rem;">
+</div>
+
+<script>
+  function toggleDropdown() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function handleSubmit() {
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const message = document.getElementById("formMessage");
+
+    if (password !== confirmPassword) {
+      message.textContent = "Passwords do not match.";
+      message.style.color = "red";
       return false;
     }
-  </script>
+
+    const userData = { firstName, lastName, email, phone };
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    message.textContent = "Account created successfully!";
+    message.style.color = "#28a745";
+
+    document.getElementById("joinForm").reset();
+    return false;
+  }
+</script>
 
 </body>
 </html>
