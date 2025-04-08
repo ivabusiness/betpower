@@ -53,21 +53,20 @@
       position: relative;
     }
 
-   .power-icon-wrapper {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #007a8c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 4px #007a8c, 0 0 10px #007a8c;
-  transition: all 0.3s ease;
-}
+    .power-icon-wrapper {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #007a8c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 4px #007a8c, 0 0 10px #007a8c;
+      transition: all 0.3s ease;
+    }
 
-.power-icon-wrapper:hover {
-  box-shadow: 0 0 6px #007a8c, 0 0 15px #007a8c;
-}
+    .power-icon-wrapper:hover {
+      box-shadow: 0 0 6px #007a8c, 0 0 15px #007a8c;
     }
 
     .power-icon-wrapper svg {
@@ -90,6 +89,59 @@
 
     .account-popup div {
       margin-bottom: 0.5rem;
+    }
+
+    .main-menu {
+      background: #0e2a47;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .main-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background: #1f2d40;
+      padding: 0.5rem;
+      border-radius: 4px;
+      z-index: 10;
+    }
+
+    .more-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .more-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-only {
+        display: inline;
+      }
+
+      .mobile-only {
+        display: none;
+      }
+
+      .more-dropdown {
+        display: none;
+      }
     }
 
     .dashboard-container {
@@ -156,6 +208,29 @@
     <div><strong>Transactions:</strong> <a href="#" style="color:#28a745;">VIEW</a></div>
   </div>
 </header>
+
+<nav class="main-menu">
+  <a href="#" class="nav-item">SPORTS</a>
+  <a href="#" class="nav-item">LIVE BETTING</a>
+  <a href="#" class="nav-item">CASINO</a>
+
+  <div class="more-dropdown mobile-only">
+    <span class="nav-item">MORE ▾</span>
+    <div class="dropdown-menu">
+      <a href="#">RACEBOOK</a><br>
+      <a href="#">LIVE DEALER</a><br>
+      <a href="#">LOTTO</a><br>
+      <a href="#">LOYALTY</a><br>
+      <a href="#">PROMOTIONS</a>
+    </div>
+  </div>
+
+  <a href="#" class="nav-item desktop-only">RACEBOOK</a>
+  <a href="#" class="nav-item desktop-only">LIVE DEALER</a>
+  <a href="#" class="nav-item desktop-only">LOTTO</a>
+  <a href="#" class="nav-item desktop-only">LOYALTY</a>
+  <a href="#" class="nav-item desktop-only">PROMOTIONS</a>
+</nav>
 
 <div class="dashboard-container">
   <aside class="sidebar">
