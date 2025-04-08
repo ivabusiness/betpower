@@ -18,10 +18,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     header img {
       height: 14px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
     .btn-cashier {
@@ -34,45 +41,52 @@
       cursor: pointer;
     }
 
-    .top-stats {
+    .account-button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
       display: flex;
-      justify-content: space-around;
-      padding: 1rem;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    .account-popup {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 10px;
       background: #1f2d40;
-      text-align: center;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.6);
+      z-index: 1000;
     }
 
-    .top-stats div {
-      flex: 1;
-      border-right: 1px solid #444;
-    }
-
-    .top-stats div:last-child {
-      border-right: none;
-    }
-
-    .top-stats h4 {
-      margin: 0.3rem 0;
+    .account-popup div {
+      margin-bottom: 0.5rem;
     }
 
     .dashboard-container {
       display: flex;
-      min-height: 80vh;
+      min-height: 85vh;
     }
 
-    .sidebar {
+    .sidebar, .betslip {
       width: 220px;
       background: #122b45;
       padding: 1rem;
     }
 
-    .sidebar h3 {
+    .sidebar h3, .betslip h3 {
       margin-top: 0;
       font-size: 1.1rem;
       margin-bottom: 1rem;
     }
 
-    .sidebar ul {
+    .sidebar ul, .betslip ul {
       list-style: none;
       padding: 0;
     }
@@ -95,37 +109,29 @@
     .main-content h2 {
       font-size: 1.5rem;
     }
+
+    .power-icon {
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <img src="BETPOWER-2.png" alt="Logo" />
-  <button class="btn-cashier" onclick="openCashier()">CASHIER</button>
-</header>
+  <div class="header-right">
+    <button class="btn-cashier" onclick="openCashier()">CASHIER</button>
+    <button class="account-button" onclick="toggleAccountPopup()">
+      <span class="power-icon">🔌</span> <span id="accountNumber">#</span>
+    </button>
+  </div>
 
-<section class="top-stats">
-  <div>
-    <h4>Balance</h4>
-    <p>$1,250.00</p>
+  <div id="accountPopup" class="account-popup">
+    <div><strong>Balance:</strong> $1,250.00</div>
+    <div><strong>Pending:</strong> $230.00</div>
+    <div><strong>Transactions:</strong> <a href="#" style="color:#28a745;">VIEW</a></div>
   </div>
-  <div>
-    <h4>Pending</h4>
-    <p>$230.00</p>
-  </div>
-  <div>
-    <h4>Wagers</h4>
-    <p>12</p>
-  </div>
-  <div>
-    <h4>History</h4>
-    <p>View</p>
-  </div>
-  <div>
-    <h4>Transactions</h4>
-    <p>Recent</p>
-  </div>
-</section>
+</header>
 
 <div class="dashboard-container">
   <aside class="sidebar">
@@ -144,18 +150,39 @@
     <h2>Select a sport to view matches</h2>
     <p>This area will dynamically display games, betting options, and odds based on selection.</p>
   </main>
+
+  <aside class="betslip">
+    <h3>Bet Slip</h3>
+    <ul>
+      <li>No bets added</li>
+    </ul>
+  </aside>
 </div>
 
 <script>
-  function openCashier() {
-    alert("Cashier modal or page coming soon!");
-  }
-
-  // Redirection protection
   const user = JSON.parse(localStorage.getItem("userData"));
   if (!user) {
     window.location.href = "index.html";
+  } else {
+    document.getElementById("accountNumber").innerText = "#" + user.accountNumber;
   }
+
+  function openCashier() {
+    alert("Cashier feature coming soon!");
+  }
+
+  function toggleAccountPopup() {
+    const popup = document.getElementById("accountPopup");
+    popup.style.display = popup.style.display === "block" ? "none" : "block";
+  }
+
+  document.addEventListener("click", function(event) {
+    const popup = document.getElementById("accountPopup");
+    const button = document.querySelector(".account-button");
+    if (!popup.contains(event.target) && !button.contains(event.target)) {
+      popup.style.display = "none";
+    }
+  });
 </script>
 
 </body>
